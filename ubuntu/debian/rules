@@ -1,33 +1,22 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-# If dpkg-buildflags is available, retrieve hardened compilation flags.
-# In all cases, add -as-needed as recent Ubuntu versions enables it by default.
-CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS 2>/dev/null)
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS 2>/dev/null)
-CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS 2>/dev/null)
-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS 2>/dev/null) -Wl,--as-needed
+DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-# Duplicate flags as CMake is ignoring CPPFLAGS.
-CFLAGS+=$(CPPFLAGS)
-CXXFLAGS+=$(CPPFLAGS)
+# SSE support enabled only for amd64
+SSE_FLAGS =
 
-# Multiarch (if supported).
-DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
-
-# Configuration flags.
-CONFIGURE_ARGS=
-
-# If multiarch is supported, override CMAKE_INSTALL_LIB
-ifneq ($(DEB_HOST_MULTIARCH),)
-CONFIGURE_ARGS+=-DCMAKE_INSTALL_LIBDIR:STRING="lib/${DEB_HOST_MULTIARCH}"
+ifeq ($(DEB_HOST_ARCH),amd64)
+  SSE_FLAGS = -mfpmath=sse -msse -msse2 -msse3 -mssse3 -DSSE
 endif
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
-	        -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
                 -DENABLE_TESTS_COMPILATION:BOOL=False \
-	        $(CONFIGURE_ARGS) \
+                -DUSE_HOST_CFLAGS:BOOL=False \
+                -DUSE_UPSTREAM_CFLAGS:BOOL=False \
+                -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+                -DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$(SSE_FLAGS)"
 
 # Generate Doxygen HTML documentation.
 override_dh_auto_build-indep:
