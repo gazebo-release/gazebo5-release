@@ -20,7 +20,8 @@ override_dh_auto_configure:
 
 # Generate Doxygen HTML documentation.
 override_dh_auto_build-indep:
-	dh_auto_build -- doc
+	true
+	#dh_auto_build -- doc
 
 override_dh_install:
 	dh_install -- # Install.
