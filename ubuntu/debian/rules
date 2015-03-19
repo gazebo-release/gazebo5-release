@@ -44,4 +44,4 @@ override_dh_strip:
 	dh_strip -a --dbg-package=gazebo5-dbg
 
 %:
-	dh $@ --parallel --with bash-completion  
+	dh $@ --parallel --buildsystem=cmake --with bash-completion
