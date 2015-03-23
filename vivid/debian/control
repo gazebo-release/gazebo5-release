@@ -73,7 +73,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
 	 libgazebo5 (= ${binary:Version}),
-	 gazebo5-common (= ${source:Version})
+	 gazebo5-common
 Recommends: gazebo5-plugin-base
 Suggests: gazebo5-doc
 Multi-Arch: foreign
@@ -139,7 +139,7 @@ Depends: libtbb-dev,
          libsimbody-dev (<< 4.0.0),
          libbullet-dev (>=2.82) | libbullet2.82-dev,
 	 libgazebo5 (= ${binary:Version}),
-	 gazebo5-common (= ${source:Version}),
+	 gazebo5-common,
 	 gazebo5-plugin-base (= ${source:Version}),
 	 ${misc:Depends}
 Multi-Arch: same
