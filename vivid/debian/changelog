@@ -1,3 +1,9 @@
+gazebo5 (5.1.0-1~vivid) vivid; urgency=medium
+
+  * gazebo5 5.1.0-1 release
+
+ -- Jose Luis Rivero <jrivero@osrfoundation.org>  Mon, 23 Mar 2015 16:58:29 +0100
+
 gazebo5 (5.0.1-1~vivid) vivid; urgency=medium
 
   * gazebo5 5.0.1-1 release
