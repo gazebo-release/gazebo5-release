@@ -63,7 +63,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
 	 libgazebo5 (= ${binary:Version}),
-	 gazebo5-common (= ${source:Version})
+	 gazebo5-common
 Recommends: gazebo5-plugin-base
 Suggests: gazebo5-doc
 Multi-Arch: foreign
@@ -119,7 +119,7 @@ Depends: libtbb-dev,
 	 libcegui-mk2-dev,
 	 libgts-dev,
 	 libgazebo5 (= ${binary:Version}),
-	 gazebo5-common (= ${source:Version}),
+	 gazebo5-common,
 	 gazebo5-plugin-base (= ${source:Version}),
 	 ${misc:Depends}
 Multi-Arch: same

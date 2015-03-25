@@ -1,0 +1,15 @@
+diff -r 59519d39aa6e CMakeLists.txt
+--- a/CMakeLists.txt	Tue Mar 24 11:36:36 2015 -0700
++++ b/CMakeLists.txt	Thu Mar 26 00:58:56 2015 +0100
+@@ -204,6 +204,11 @@
+   include(${gazebo_cmake_dir}/DefaultCFlags.cmake)
+ endif()
+ 
++# Visual Studio enables c++11 support by default
++if (NOT MSVC)
++  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UPPERCASE}} -std=c++11")
++endif()
++
+ # Check if warning options are avaliable for the compiler and return WARNING_CXX_FLAGS variable
+ filter_valid_compiler_flags(-Wall -Wextra -Wno-long-long -Wno-unused-value -Wno-unused-value
+                                -Wno-unused-value -Wno-unused-value -Wfloat-equal -Wshadow
