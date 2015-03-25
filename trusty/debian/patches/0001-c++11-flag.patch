@@ -1,0 +1,12 @@
+diff -r 59519d39aa6e CMakeLists.txt
+--- a/CMakeLists.txt	Tue Mar 24 11:36:36 2015 -0700
++++ b/CMakeLists.txt	Thu Mar 26 00:49:03 2015 +0100
+@@ -205,7 +205,7 @@
+ endif()
+ 
+ # Check if warning options are avaliable for the compiler and return WARNING_CXX_FLAGS variable
+-filter_valid_compiler_flags(-Wall -Wextra -Wno-long-long -Wno-unused-value -Wno-unused-value
++filter_valid_compiler_flags(-std=c++11 -Wall -Wextra -Wno-long-long -Wno-unused-value -Wno-unused-value
+                                -Wno-unused-value -Wno-unused-value -Wfloat-equal -Wshadow
+ 			       -Winit-self -Wswitch-default -Wmissing-include-dirs -pedantic)
+ 
