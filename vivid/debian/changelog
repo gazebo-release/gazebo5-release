@@ -1,3 +1,9 @@
+gazebo5 (5.2.0-1~vivid) vivid; urgency=medium
+
+  * gazebo5 5.2.0-1 release
+
+ -- Nate Koenig <nate@osrfoundation.org>  Fri, 02 Oct 2015 07:53:36 -0700
+
 gazebo5 (5.1.0-1~vivid) vivid; urgency=medium
 
   * gazebo5 5.1.0-1 release
